@@ -1,4 +1,0 @@
-Intro to Topology
-
-Shape -> the meaning we give a set based on "neighborhoods" or connectivity
-

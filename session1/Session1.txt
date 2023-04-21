@@ -1,0 +1,51 @@
+Intro to Topology
+
+Shape -> the meaning we give a set based on "neighborhoods" or connectivity
+
+The bridges of Koenigsberg -
+	- Paper written by Euler
+	- Kicked off graph theory, and then topology
+	- Can you walk across every bridge exactly once? What makes this possible or impossible?
+	- Treat each landmass like a node, each bridge is an edge
+	- You can find an Eulerian path iff there are either exactly 0 or 2 nodes of odd degree
+
+Representing Shapes
+	- To understand computational topology, you have to understand triangles in different dimensions fron 1 - n
+		(Line, triangle, tetrahedrons, etc.,)
+		- These are called n-simplex
+		- More rigorously, a geometric n-simplex is the smallest convext set of n+1 affinely independent points
+			- Abstract version is n+1 elements
+	- Move on to cubical complexes (Line, square, cube, hypercube, etc.,)
+		- An n-cube is a compy of I^n, where I is the unit interval [0,1]
+		- A cubical complex is a space created by gluing cubes together along sub-cubes. A common cubical complex is just a regular grid
+		- A cubical complex can always be transformed into a simplical one (add diagonals to each cube)
+
+Maps and Homeomorphisms
+	- Continuous map f: A -> B is continous iff for all open sets U in B, f^-1(U) is open in A
+	- Strongest form of shape equivalence is a homeomorphism
+		- A, B homeomorphic if there is a bi-continuous bijective map H: A -> B
+			- If this exists, they're topologically the same
+			- Determining this is generally really hard
+
+Topological Invariants
+	- We can't explore every map from A -> B
+	- A topological invariant I is a fxn that takes in an input of a topological spaceand returns a property of that space
+		- EG if A, B are homeomorphic, then I(A) = I(B). Reverse doesn't need to be true
+	- Homotopy is the first invariant
+		- γ_0, γ_1: A -> B continuous functions are homotopic iff there is a continuous function H: A x I -> B such that H(a,0) = f(a) and H(a,1) = g(a) for all a in A. 
+		- Two topological spaces A and B are homotopy equivalent iff there exist continuous functions f: A -> B and g: B -> A such that f of g and g of f are homotopyic to each other
+			- Roughly, if you can mab A to B and back to A in a nice way
+
+Euler Characteristic
+	- Represent shape as a cellular structure (simplical or cubical complex). Then the Euler characteristic is the alternating number of i-cells
+	χ(K) = Sum_i=1^infinity (-1)^i|K_i|
+		- For graph, i = 1, so |V| - |E| + |F|
+	- EC of Sphere is 2
+		- Add any three points to surface of sphere, make a triangle
+		- There's another edge around back of sphere to any two points
+		- That makes three vertices minus three edges plus two faces = 2
+
+Homology
+	- Homology of a spaece is a sequence of homology groups (one for each dimension) that captures the "holes"
+		- 0 is connected components, 1 is loop-like structures, and 2 is 3d voids (inside vs outside, etc.,)
+	- 
