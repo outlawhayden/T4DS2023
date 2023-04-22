@@ -1,5 +1,6 @@
 library(rgdal)
 library(sp)
+library(TDA)
 
 # import data
 download.file("https://www.sciencebase.gov/catalog/file/get/58af7532e4b01ccd54f9f5d3?facet=GNPglaciers_1966", destfile = "/Users/haydenoutlaw/Documents/Projects/T4DS2023/session5/GNPglaciers_1966.zip")
@@ -110,6 +111,8 @@ distances2015 <- distFct(perimeter2015, dfGlac2015)
 colors1998 <- distances1998/max(distances1998)
 colors2005 <- distances2005/max(distances2005)
 colors2015 <- distances2015/max(distances2015)
+
+plot(dfGlac1998[,1], dfGlac1998[,2], pch=20, col = rgb(0,0,colors1998), cex = 1.5)
 
 diag1998 <- gridDiag(X = dfGlac1998, FUNvalues = distances1998, maxdimension = 1, sublevel = TRUE, printProgress = TRUE)
 diag2005 <- gridDiag(X = dfGlac2005, FUNvalues = distances2005, maxdimension = 1, sublevel = TRUE, printProgress = TRUE)
