@@ -81,3 +81,33 @@ myfilt <- gridFiltration(FUNvalues = vals, sublevel = TRUE, printProgress = TRUE
 # create diagrams for rips filtrations using ripsDiag
 persistDiag <- ripsDiag(X, maxdimension = 4, maxscale = sqrt(17), dist = "euclidean", printProgress = TRUE)
 plot(persistDiag[["diagram"]])
+
+
+# create plots for a lower-start filtration
+# included in TDA, find persistence diagram
+pd = gridDiag(FUNvalues = vals)
+plot(pd[["diagram"]])
+
+# do barcode version
+plot(pd[["diagram"]], barcode = TRUE)
+
+# inverse-V example
+a <- 1
+b <- 2
+c <- 3 
+ac <- c(1,3)
+bc <- c(2,3)
+vcplx <- list(a,b,c,ac,bc)
+
+# store coordinates
+x <- c(0,2,1)
+y <- c(0,1,1)
+coords = cbind(x,y)
+
+vvals <- c(0,0,1)
+
+# run filter
+vfilt <- funFiltration(vvals, vcplx)
+vdiag <- filtrationDiag(vfilt, maxdimension = 2)
+vdiag$diagram
+
