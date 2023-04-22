@@ -118,15 +118,20 @@ diag1998 <- gridDiag(X = dfGlac1998, FUNvalues = distances1998, maxdimension = 1
 diag2005 <- gridDiag(X = dfGlac2005, FUNvalues = distances2005, maxdimension = 1, sublevel = TRUE, printProgress = TRUE)
 diag2015 <- gridDiag(X = dfGlac2015, FUNvalues = distances2015, maxdimension = 1, sublevel = TRUE, printProgress = TRUE)
 
+
+
 d1 = bottleneck(Diag1 = Diag1966$diagram, Diag2 = diag1998$diagram, dimension = 0)
 d2 = bottleneck(Diag1 = diag1998$diagram, Diag2 = diag2005$diagram, dimension = 0)
 d3 = bottleneck(Diag1 = diag2005$diagram, Diag2 = diag2015$diagram, dimension = 0)
 
 
 # plot comparative bottleneck distances
+pdf(file = "BottleneckDistanceDiffs.pdf")
+
+
 plot(x=c(1,2,3), y=c(d1/(1998-1966), d2/(2005-1998), d3/(2015-2005)), ylab="Bottleneck Distance", xlab="Measurement Interval", main="Change in Bottleneck Distance over Time")
 # with this plot, we can even add segments for visualization
 segments(x0 = 1, y0 = d1/(1998-1966), x1 = 2, y1 = d2/(2005-1998), col = "black") 
 segments(x0 = 2, y0 = d2/(2005-1998), x1 = 3,  y1 = d3/(2015-2005), col = "black")
-
+dev.off()
 
